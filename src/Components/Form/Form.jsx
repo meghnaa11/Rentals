@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import './Form.css';
 
 const Form = () => {
-    let isRegistered = false;
+    let isNotRegistered = true;
 
     let [isMousedOver, setMouse] = useState(false);
 
@@ -11,11 +11,11 @@ const Form = () => {
     }
 
     function handleMouseOver() {
-        isMousedOver = true;
+        setMouse(true);
     }
 
     function handleMouseOut() {
-        isMousedOver = false;
+        setMouse(false);
     }
 
     function handleSubmit(event) {
@@ -25,12 +25,12 @@ const Form = () => {
     return (
         <div className="form" onSubmit={handleSubmit}>
             <form className="form">
-                {isRegistered && <input type="text" placeholder="First Name" />}
-                {isRegistered && <input type="text" placeholder="Last Name" />}
-                <input type="text" placeholder="Username" />
+                {isNotRegistered && <input type="text" placeholder="First Name" />}
+                {isNotRegistered && <input type="text" placeholder="Last Name" />}
+                <input type="email" placeholder="Email" />
                 <input type="password" placeholder="Password" />
-                {isRegistered && <input type="password" placeholder="Confirm Password" />}
-                <button type="submit" style={{backgroudColor: isMousedOver ? "black" : "white"}}onClick={handleClick} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>{isRegistered ? "Login" : "Register"}</button>
+                {isNotRegistered && <input type="password" placeholder="Confirm Password" />}
+                <button type="submit" style={{backgroundColor: isMousedOver ? "black" : "white"}}onClick={handleClick} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>{isNotRegistered ? "Register" : "Login"}</button>
             </form>
 
         </div>

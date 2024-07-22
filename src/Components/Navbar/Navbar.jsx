@@ -4,13 +4,8 @@ import { FaSearch, FaHome, FaUser } from 'react-icons/fa';
 import Home from "../Home/Home";
 
 
-const Navbar = () => {
+const Navbar = (props) => {
 
-    let [profileClicked, setProfileClicked] = useState(false);
-
-    function profileClick() {
-        setProfileClicked(true);
-    }
 
     return(
         <div className="navbar">
@@ -25,8 +20,7 @@ const Navbar = () => {
                 <input type="text" placeholder="Search" />
                 <FaSearch className="search-logo"/>
             </div>
-            <button onClick={profileClick} className="profile"><FaUser/></button>
-            {profileClicked && <Home register={profileClicked} />}
+            <button onClick={props.onProfileClick} className="profile"><FaUser/></button>
         </div>
     );
 };
